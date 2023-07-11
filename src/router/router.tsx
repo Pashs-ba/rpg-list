@@ -1,8 +1,6 @@
-import {createBrowserRouter} from "react-router-dom";
 import App from "../App.tsx";
 import Login from "../pages/Login.tsx";
 import {Route, Routes} from "react-router";
-import React from "react";
 import Guard from "./Guard.tsx";
 
 function authCheck() {
