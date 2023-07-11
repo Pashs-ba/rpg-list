@@ -8,14 +8,20 @@
     "build": "tsc && vite build",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "cypress": "cypress open"
+    "cy:all": "cypress run --component && cypress run --e2e",
+    "cypress": "cypress open",
+    "ci": "start-server-and-test dev http-get://localhost:3000 cy:all"
   },
   "dependencies": {
+    "@cypress/vite-dev-server": "^5.0.5",
     "bootstrap": "^5.3.0",
     "bootstrap-icons": "^1.10.5",
     "cypress": "^12.17.1",
+    "cypress-vite": "^1.4.1",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.14.1",
+    "start-server-and-test": "^2.0.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.14",
