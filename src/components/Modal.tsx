@@ -1,4 +1,5 @@
 import {ReactNode} from "react";
+import "bootstrap/dist/js/bootstrap.bundle.min";
 
 export default function Modal({
                                   children,

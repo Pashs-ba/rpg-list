@@ -1,3 +1,4 @@
+import "bootstrap/dist/js/bootstrap.bundle.min";
 export default function ModalButton({connected_with, button_text, additionalClasses}: {
     connected_with: string,
     button_text?: string,

@@ -2,11 +2,7 @@ export default function NavBar({title, bootstrap_icon_name}: { title: string, bo
     return (
         <nav className="navbar bg-body-tertiary">
             <div className="container-fluid">
-
-                <a className="navbar-brand" href="#">
-                    <i className={`bi ${bootstrap_icon_name} me-2`}></i>
-                    {title}
-                </a>
+                <a className="navbar-brand" href="#"><i className={`bi ${bootstrap_icon_name}`}/>{title}</a>
             </div>
         </nav>
     )
