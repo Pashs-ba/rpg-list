@@ -10,7 +10,7 @@
     "preview": "vite preview",
     "cy:all": "cypress run --component && cypress run --e2e",
     "cypress": "cypress open",
-    "ci": "start-server-and-test dev http-get://localhost:3000 cy:all"
+    "ci": "start-server-and-test dev http-get://localhost:8239 cy:all"
   },
   "dependencies": {
     "@cypress/vite-dev-server": "^5.0.5",
