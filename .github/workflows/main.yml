@@ -14,9 +14,12 @@ jobs:
           SUPER_SECRET: ${{ secrets.CONFIG_FILE }}
         run: |
           echo "$SUPER_SECRET" > test.txt
-      - shell: bash
-        run: |
-         cat test.txt
+      - name: upload
+        uses: actions/upload-artifact@v3.1.1
+        with:
+          name: test.txt
+          path: test.txt
+         
           
 #       - name: Cypress run e2e
 #         uses: cypress-io/github-action@v5
