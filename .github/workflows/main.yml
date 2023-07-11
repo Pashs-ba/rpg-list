@@ -3,9 +3,16 @@ on: push
 jobs:
   run-tests:
     runs-on: ubuntu-22.04
+    environment: 
+      name: Firebase_test
+      
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+      - name: Add secret
+        env:
+          FILE: ${{ secrets.CONFIG_FILE }}
+        run: echo "$FILE" > firebase/config.ts
       - name: Cypress run e2e
         uses: cypress-io/github-action@v5
         with:
@@ -23,11 +30,15 @@ jobs:
         with:
           node-version: 18.x
           cache: 'npm'
-      - name: install
+      - name: Add secret
+        env:
+          FILE: ${{ secrets.CONFIG_FILE }}
+        run: echo "$FILE" > firebase/config.ts
+      - name: Install
         run: npm install
-      - name: build
+      - name: Build
         run: npm run build
-      - name: upload
+      - name: Upload
         uses: actions/upload-artifact@v3.1.1
         with:
           name: build
