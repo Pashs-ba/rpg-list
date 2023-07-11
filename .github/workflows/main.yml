@@ -3,8 +3,8 @@ on: push
 jobs:
   run-tests:
     runs-on: ubuntu-22.04
-#     environment: 
-#       -name: Firebase_test
+    environment: 
+      name: Firebase_test
       
     steps:
       - name: Checkout
@@ -12,8 +12,7 @@ jobs:
       - shell: bash
         env:
           SUPER_SECRET: ${{ secrets.CONFIG_FILE }}
-        run: |
-          echo "$SUPER_SECRET" > test.txt
+        run: echo "$SUPER_SECRET" > test.txt
       - name: upload
         uses: actions/upload-artifact@v3.1.1
         with:
