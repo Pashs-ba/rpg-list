@@ -6,10 +6,13 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Cypress run
+      - name: Cypress run e2e
         uses: cypress-io/github-action@v5
         with:
           start: npm run dev
+      - name: Cypress run component
+        uses: cypress-io/github-action@v5
+        with:
           component: true
   make-bundle:
     runs-on: ubuntu-latest
