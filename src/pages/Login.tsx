@@ -1,7 +1,7 @@
 import Card from "../components/Card.tsx";
 import {Form} from "../components/Form.tsx";
 import {ElementType} from "../components/types.ts";
-import {db} from "../../firebase/app.ts";
+import {db} from "../firebase/app.ts";
 import {collection, doc, getDoc} from "@firebase/firestore";
 import {useState} from "react";
 import {useNavigate} from "react-router";

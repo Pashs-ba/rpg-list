@@ -12,7 +12,7 @@ jobs:
       - name: Add secret
         env:
           FILE: ${{ secrets.CONFIG_FILE }}
-        run: echo "$FILE" > firebase/config.ts
+        run: echo "$FILE" > src/firebase/config.ts
       - name: Cypress run e2e
         uses: cypress-io/github-action@v5
         with:
@@ -33,7 +33,7 @@ jobs:
       - name: Add secret
         env:
           FILE: ${{ secrets.CONFIG_FILE }}
-        run: echo "$FILE" > firebase/config.ts
+        run: echo "$FILE" > src/firebase/config.ts
       - name: Install
         run: npm install
       - name: Build
