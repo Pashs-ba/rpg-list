@@ -1,7 +1,11 @@
+import {Outlet} from "react-router";
+import NavBar from "./components/NavBar.tsx";
+
 export default function App() {
-  return (
-    <>
-      <h1>It WOrks!</h1>
-    </>
-  )
+    return (
+        <>
+            <NavBar title={"RPG List"} bootstrap_icon_name={"bi-magic"}/>
+            <Outlet/>
+        </>
+    )
 }
