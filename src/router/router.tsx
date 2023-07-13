@@ -1,10 +1,8 @@
 import App from "../App.tsx";
-import Login from "../pages/Login.tsx";
 import {Route, Routes} from "react-router";
 import Tester from "./Tester.tsx";
-import HomePage from "../pages/HomePage.tsx";
-import Filler from "../pages/tests/Filler.tsx";
-import MessageBLockTestPage from "../pages/tests/MessageBlockTestPage.tsx";
+import {lazy, Suspense} from "react";
+import LoadingPage from "../pages/LoadingPage.tsx";
 
 function authCheck() {
     return !!localStorage.getItem("user")
@@ -15,30 +13,34 @@ function alreadyAuthenticated() {
 }
 
 export default function AppRoutes() {
+    const HomePage = lazy(() => import("../pages/HomePage.tsx"));
+    const Login = lazy(() => import("../pages/Login.tsx"));
+    const Filler = lazy(() => import("../pages/tests/Filler.tsx"));
+    const MessageBLockTestPage = lazy(() => import("../pages/tests/MessageBlockTestPage.tsx"));
     return (
-        <Routes>
-            <Route path={"/"} element={<App/>}>
-                <Route
-                    element={
-                        <Tester navigate_in_fail={"/login"}
-                                test_function={authCheck}
-                        />
+        <Suspense fallback={<LoadingPage/>}>
+            <Routes>
+                <Route path={"/"} element={<App/>}>
+                    <Route
+                        element={
+                            <Tester navigate_in_fail={"/login"}
+                                    test_function={authCheck}
+                            />
+                        }>
+                        <Route index element={<HomePage/>}/>
+                        <Route path={"test/"}>
+                            <Route path={"message_block"} element={<MessageBLockTestPage/>}/>
+                            <Route path={"filler"} element={<Filler/>}/>
+                        </Route>
+                    </Route>
+                    <Route element={
+                        <Tester navigate_in_fail={"/"}
+                                test_function={alreadyAuthenticated}/>
                     }>
-                    <Route index element={<HomePage/>}/>
-                    <Route path={"test/"}>
-                        <Route path={"message_block"} element={<MessageBLockTestPage/>}/>
-                        <Route path={"filler"} element={<Filler/>}/>
+                        <Route path={"login"} element={<Login/>}/>
                     </Route>
                 </Route>
-                <Route element={
-                    <Tester navigate_in_fail={"/"}
-                            test_function={alreadyAuthenticated}/>
-                }>
-                    <Route path={"login"} element={<Login/>}/>
-                </Route>
-            </Route>
-
-
-        </Routes>
+            </Routes>
+        </Suspense>
     )
 }
