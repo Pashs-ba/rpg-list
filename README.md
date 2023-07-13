@@ -1,4 +1,6 @@
 # RPG List
+![Github CI status](https://github.com/Pashs-ba/rpg-list/actions/workflows/main.yml/badge.svg)
+
 Minimalistic character list for modified Savage Worlds system
 ## TODO
 All
