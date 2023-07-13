@@ -5,12 +5,12 @@ import {db} from "../firebase/app.ts";
 import Card from "./UI/Card.tsx";
 
 export default function CharactersList() {
-    const user = JSON.parse(localStorage.getItem("user")) as User
+    const user = JSON.parse(localStorage.getItem("user") as string) as User
     const [characters, setCharacters] = useState([] as Character[])
     //TODO tests
 
     useEffect(() => {
-        const new_characters = []
+        const new_characters: Character[] = []
         user.characters.map((character_path) => {
             getDoc(doc(db, character_path)).then((character) => {
                 new_characters.push({

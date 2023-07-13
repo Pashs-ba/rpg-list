@@ -22,7 +22,7 @@ export default function Login() {
                         const user: User = {
                             id: v.id,
                             name: v.get("name"),
-                            characters: v.get("characters").map(el=>{return el.path}),
+                            characters: v.get("characters").map((el: any)=>{return el.path}),
                             type: v.get("type")
                         }
                         localStorage.setItem("user", JSON.stringify(user))
