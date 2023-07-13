@@ -1,8 +1,10 @@
 import App from "../App.tsx";
 import Login from "../pages/Login.tsx";
 import {Route, Routes} from "react-router";
-import Guard from "./Guard.tsx";
+import Tester from "./Tester.tsx";
 import HomePage from "../pages/HomePage.tsx";
+import Filler from "../pages/tests/Filler.tsx";
+import MessageBLockTestPage from "../pages/tests/MessageBlockTestPage.tsx";
 
 function authCheck() {
     return !!localStorage.getItem("user")
@@ -18,15 +20,19 @@ export default function AppRoutes() {
             <Route path={"/"} element={<App/>}>
                 <Route
                     element={
-                        <Guard navigate_in_fail={"/login"}
-                               test_function={authCheck}
+                        <Tester navigate_in_fail={"/login"}
+                                test_function={authCheck}
                         />
                     }>
                     <Route index element={<HomePage/>}/>
+                    <Route path={"test/"}>
+                        <Route path={"message_block"} element={<MessageBLockTestPage/>}/>
+                        <Route path={"filler"} element={<Filler/>}/>
+                    </Route>
                 </Route>
                 <Route element={
-                    <Guard navigate_in_fail={"/"}
-                           test_function={alreadyAuthenticated}/>
+                    <Tester navigate_in_fail={"/"}
+                            test_function={alreadyAuthenticated}/>
                 }>
                     <Route path={"login"} element={<Login/>}/>
                 </Route>

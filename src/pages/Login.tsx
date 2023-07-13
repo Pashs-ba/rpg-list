@@ -3,11 +3,16 @@ import {Form} from "../components/Form.tsx";
 import {ElementType} from "../components/types.ts";
 import {db} from "../firebase/app.ts";
 import {collection, doc, getDoc} from "@firebase/firestore";
-import {useState} from "react";
 import {useNavigate} from "react-router";
+import MessageBlock from "../components/messages/MessageBlock.tsx";
+import {MessagesType, User} from "../types/main.ts";
+import {useDispatch} from "react-redux";
+import {addMessage} from "../components/messages/messageSlice.ts";
 
 export default function Login() {
     const navigate = useNavigate()
+    const dispatch = useDispatch()
+
     function auth(pass_key: string) {
         getDoc(doc(collection(db, "pass_keys"), pass_key)).then(
             r => {
@@ -23,21 +28,10 @@ export default function Login() {
                         navigate("/")
                     })
                 } else {
-                    changeFailed(true)
+                    dispatch(addMessage({text: "Неверный ключ", type: MessagesType.DANGER}))
                 }
             }
         )
-    }
-
-    const [isFailed, changeFailed] = useState(false)
-
-    function alertMessage() {
-        return isFailed ?
-            (
-                <div className="alert alert-danger" role="alert">
-                    Неверный код
-                </div>
-            ) : null
     }
 
     return (
@@ -46,7 +40,7 @@ export default function Login() {
                 <div className="col-lg-4">
                     <Card>
                         <h3>Авторизация</h3>
-                        {alertMessage()}
+                        <MessageBlock/>
                         <Form
                             elements={[
                                 {
