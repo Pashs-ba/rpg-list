@@ -1,5 +1,5 @@
 import {SmartSelectType} from "./types.ts";
-import BaseSelect from "./BaseSelect";
+import BaseSelect from "./BaseSelect.tsx";
 import {useEffect, useState} from "react";
 
 export default function SmartSelect({

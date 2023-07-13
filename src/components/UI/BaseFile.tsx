@@ -1,4 +1,4 @@
-import {BaseFileType} from "./types";
+import {BaseFileType} from "./types.ts";
 
 export default function BaseFile({
                                      required,

@@ -13,13 +13,13 @@ import {
     SmartSelectType
 } from "./types.ts";
 import {ReactElement, useEffect, useState} from "react";
-import BaseInput from "./BaseInput";
-import BaseSelect from "./BaseSelect";
-import {BaseCheckbox} from "./BaseCheckbox";
-import {BaseTextArea} from "./BaseTextArea";
-import BaseRadio from "./BaseRadio";
-import BaseFile from "./BaseFile";
-import SmartSelect from "./SmartSelect";
+import BaseInput from "./BaseInput.tsx";
+import BaseSelect from "./BaseSelect.tsx";
+import {BaseCheckbox} from "./BaseCheckbox.tsx";
+import {BaseTextArea} from "./BaseTextArea.tsx";
+import BaseRadio from "./BaseRadio.tsx";
+import BaseFile from "./BaseFile.tsx";
+import SmartSelect from "./SmartSelect.tsx";
 
 export function Form({
                          elements,

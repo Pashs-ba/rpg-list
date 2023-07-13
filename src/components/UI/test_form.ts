@@ -1,4 +1,4 @@
-import {ElementType, FormElementType} from "./types";
+import {ElementType, FormElementType} from "./types.ts";
 
 export const elements: FormElementType[] = [
     {

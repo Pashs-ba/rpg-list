@@ -1,7 +1,14 @@
 export type User = {
     id: string,
     name:string,
-    connected_characters: string[]
+    characters: string[]
+    type: string
+}
+
+export type Character = {
+    id: string,
+    name: string,
+    freeExperience: number
 }
 
 export enum MessagesType {

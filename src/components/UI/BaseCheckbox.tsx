@@ -1,5 +1,5 @@
 'use client';
-import {BaseCheckboxType} from "./types";
+import {BaseCheckboxType} from "./types.ts";
 
 export function BaseCheckbox({
                                  required,

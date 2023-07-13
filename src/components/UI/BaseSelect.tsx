@@ -1,4 +1,4 @@
-import {BaseSelectType} from "./types";
+import {BaseSelectType} from "./types.ts";
 
 export default function BaseSelect({
                                        options,

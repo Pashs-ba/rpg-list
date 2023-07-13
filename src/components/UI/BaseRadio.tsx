@@ -1,4 +1,4 @@
-import {BaseRadioType} from "./types";
+import {BaseRadioType} from "./types.ts";
 
 export default function BaseRadio({
                                       checked,

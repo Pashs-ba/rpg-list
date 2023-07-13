@@ -1,5 +1,5 @@
-import ModalButton from "../ModalButton.tsx";
-import Modal from "../Modal.tsx";
+import ModalButton from "../UI/ModalButton.tsx";
+import Modal from "../UI/Modal.tsx";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js';
 

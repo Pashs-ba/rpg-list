@@ -1,4 +1,4 @@
-import {Form} from '../Form.tsx'
+import {Form} from '../UI/Form.tsx'
 import {
     elements,
     multi_select_element,
@@ -6,7 +6,7 @@ import {
     test_empty,
     test_initial_value,
     test_select
-} from "../test_form.ts";
+} from "../UI/test_form.ts";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 describe('<Form />', () => {

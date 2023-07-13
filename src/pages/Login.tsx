@@ -1,6 +1,6 @@
-import Card from "../components/Card.tsx";
-import {Form} from "../components/Form.tsx";
-import {ElementType} from "../components/types.ts";
+import Card from "../components/UI/Card.tsx";
+import {Form} from "../components/UI/Form.tsx";
+import {ElementType} from "../components/UI/types.ts";
 import {db} from "../firebase/app.ts";
 import {collection, doc, getDoc} from "@firebase/firestore";
 import {useNavigate} from "react-router";
@@ -22,7 +22,8 @@ export default function Login() {
                         const user: User = {
                             id: v.id,
                             name: v.get("name"),
-                            connected_characters: []
+                            characters: v.get("characters").map(el=>{return el.path}),
+                            type: v.get("type")
                         }
                         localStorage.setItem("user", JSON.stringify(user))
                         navigate("/")

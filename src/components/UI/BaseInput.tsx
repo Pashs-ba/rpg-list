@@ -1,5 +1,5 @@
 'use client';
-import {BaseInputType} from './types'
+import {BaseInputType} from './types.ts'
 export default function BaseInput(
     {
         placeholder,
