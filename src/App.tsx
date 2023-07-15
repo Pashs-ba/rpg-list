@@ -5,7 +5,10 @@ export default function App() {
     return (
         <>
             <NavBar title={"RPG List"} bootstrap_icon_name={"bi-magic"}/>
-            <Outlet/>
+            <div className={"full-height"}>
+                <Outlet/>
+            </div>
+
         </>
     )
 }

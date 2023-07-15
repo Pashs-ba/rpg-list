@@ -3,11 +3,12 @@ import {useEffect, useState} from "react";
 import {doc, getDoc} from "@firebase/firestore";
 import {db} from "../firebase/app.ts";
 import Card from "./UI/Card.tsx";
+import LoadingComponent from "./UI/LoadingComponent.tsx";
 
 export default function CharactersList() {
     const user = JSON.parse(localStorage.getItem("user") as string) as User
     const [characters, setCharacters] = useState([] as Character[])
-    //TODO tests
+    //TODO tests update user
 
     useEffect(() => {
         const new_characters: Character[] = []
@@ -29,16 +30,30 @@ export default function CharactersList() {
     function RenderCharacters() {
         return characters.map((character) => {
             return (
-                <Card additionalClasses={"mb-3"} key={character.id}>
-                    {character.name}
-                </Card>
+                <div key={character.id} className={"col-lg-3"}>
+                    <Card additionalClasses={"mb-3 h-100"}>
+
+                        <h5 className={"card-title"}>
+                            {character.name}
+                        </h5>
+                        <p className={"card-text"}>
+                            Свободный пОпыт: {character.freeExperience}
+                        </p>
+                        <a href="#"
+                           className="btn btn-primary">
+                            Открыть
+                        </a>
+                    </Card>
+                </div>
             )
         })
     }
 
     return (
-        <div>
-            {RenderCharacters()}
+        <div className={"row justify-content-center align-items-center"}>
+            {
+                characters.length === user.characters.length ? RenderCharacters() : <LoadingComponent/>
+            }
         </div>
     )
 }
