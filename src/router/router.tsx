@@ -17,6 +17,7 @@ export default function AppRoutes() {
     const Login = lazy(() => import("../pages/Login.tsx"));
     const Filler = lazy(() => import("../pages/tests/Filler.tsx"));
     const MessageBLockTestPage = lazy(() => import("../pages/tests/MessageBlockTestPage.tsx"));
+    const NotFound = lazy(() => import("../pages/NotFound.tsx"));
     return (
         <Suspense fallback={<LoadingPage/>}>
             <Routes>
@@ -39,6 +40,7 @@ export default function AppRoutes() {
                     }>
                         <Route path={"login"} element={<Login/>}/>
                     </Route>
+                    <Route path={"*"} element={<NotFound/>}/>
                 </Route>
             </Routes>
         </Suspense>
