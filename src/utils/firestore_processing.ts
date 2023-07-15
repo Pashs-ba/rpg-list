@@ -24,12 +24,11 @@ export function UpdateUser() {
 export function GetSingleCharacterById(character_id: string) {
     return new Promise<Character>((resolve) => {
         getDoc(doc(collection(db, "characters"), character_id)).then((res) => {
-            const character: Character = {
+            const character = {
                 id: res.id,
-                name: res.get("name"),
-                freeExperience: res.get("freeExperience")
+                ...res.data()
             }
-            resolve(character)
+            resolve(character as Character)
         })
     })
 }
@@ -37,12 +36,11 @@ export function GetSingleCharacterById(character_id: string) {
 export function GetSingleCharacterByPath(character_path: string) {
     return new Promise<Character>((resolve,) => {
         getDoc(doc(db, character_path)).then((res) => {
-            const character: Character = {
+            const character = {
                 id: res.id,
-                name: res.get("name"),
-                freeExperience: res.get("freeExperience")
+                ...res.data()
             }
-            resolve(character)
+            resolve(character as Character)
         })
     })
 }

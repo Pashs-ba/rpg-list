@@ -13,6 +13,7 @@ export default function MessageBlock() {
                 el.need_to_delete ? dispatch(deleteMessage(el)) : dispatch(setNeedToDeleteMessage(el))
             }
         })
+
     }, [])
 
     function renderMessages() {
@@ -37,6 +38,7 @@ export default function MessageBlock() {
                 </div>
             )
         }
+
         return result
     }
 

@@ -18,6 +18,7 @@ export default function AppRoutes() {
     const Filler = lazy(() => import("../pages/tests/Filler.tsx"));
     const MessageBLockTestPage = lazy(() => import("../pages/tests/MessageBlockTestPage.tsx"));
     const NotFound = lazy(() => import("../pages/NotFound.tsx"));
+    const CharacterPage = lazy(() => import("../pages/CharacterPage.tsx"));
     return (
         <Suspense fallback={<LoadingPage/>}>
             <Routes>
@@ -29,6 +30,7 @@ export default function AppRoutes() {
                             />
                         }>
                         <Route index element={<HomePage/>}/>
+                        <Route path={"character/:CharacterId"} element={<CharacterPage/>}/>
                         <Route path={"test/"}>
                             <Route path={"message_block"} element={<MessageBLockTestPage/>}/>
                             <Route path={"filler"} element={<Filler/>}/>

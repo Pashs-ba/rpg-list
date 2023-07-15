@@ -11,6 +11,9 @@ const slice = createSlice(
             addMessage: (state: any, action) => {
                 state.messages.push({...action.payload, need_to_delete: true})
             },
+            addMessageWithRedirection: (state: any, action) => {
+                state.messages.push({...action.payload})
+            },
             deleteMessage: (state: any, action) => {
                 const index = state.messages.findIndex((message: Message) => message.text === action.payload.text)
                 if (index !== -1) {
@@ -29,7 +32,7 @@ export const {
     addMessage,
     deleteMessage,
     setNeedToDeleteMessage,
-
+    addMessageWithRedirection
 } = slice.actions
 export const selectMessages = (state: any) => state.messenger.messages
 export default slice.reducer

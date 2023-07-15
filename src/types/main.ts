@@ -5,10 +5,25 @@ export type User = {
     type: string
 }
 
+export type BaseSpec = {
+    speed: number
+    quirkiness: number
+    resilience: number
+    compliance: number
+    receptivity: number
+}
+
 export type Character = {
     id: string,
     name: string,
     freeExperience: number
+    race: string
+    baseSpec: BaseSpec
+    effects: string[]
+    injuries: string[]
+    courage: number
+    health: number
+    fatigue: number
 }
 
 export enum MessagesType {
