@@ -1,27 +1,23 @@
 import {Character, User} from "../types/main.ts";
 import {useEffect, useState} from "react";
-import {doc, getDoc} from "@firebase/firestore";
-import {db} from "../firebase/app.ts";
 import Card from "./UI/Card.tsx";
 import LoadingComponent from "./UI/LoadingComponent.tsx";
-import {UpdateUser} from "../utils/firestore_processing.ts";
+import {GetSingleCharacterByPath, UpdateUser} from "../utils/firestore_processing.ts";
+import {Link} from "react-router-dom";
 
 export default function CharactersList() {
     let user = JSON.parse(localStorage.getItem("user") as string) as User
     const [characters, setCharacters] = useState([] as Character[])
-    //TODO tests
+    //TODO tests?
 
     useEffect(() => {
-        UpdateUser(() => {
-            user = JSON.parse(localStorage.getItem("user") as string) as User
+        UpdateUser().then((new_user) => {
+            user = new_user
+            localStorage.setItem("user", JSON.stringify(user))
             const new_characters: Character[] = []
             user.characters.map((character_path) => {
-                getDoc(doc(db, character_path)).then((character) => {
-                    new_characters.push({
-                        id: character.id,
-                        name: character.get("name"),
-                        freeExperience: character.get("freeExperience")
-                    })
+                GetSingleCharacterByPath(character_path).then((character) => {
+                    new_characters.push(character)
                     if (new_characters.length == user.characters.length) {
                         setCharacters(new_characters)
                     }
@@ -42,10 +38,10 @@ export default function CharactersList() {
                         <p className={"card-text"}>
                             Свободный пОпыт: {character.freeExperience}
                         </p>
-                        <a href="#"
-                           className="btn btn-primary">
+                        <Link to={`/character/${character.id}`}
+                              className="btn btn-primary">
                             Открыть
-                        </a>
+                        </Link>
                     </Card>
                 </div>
             )

@@ -25,3 +25,7 @@ export type Message = {
     need_to_delete?: boolean
     debug_fix?: boolean // https://bit.ly/3pDRHjv
 }
+
+export enum Errors{
+    BAD_AUTH
+}
