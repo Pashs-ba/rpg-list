@@ -5,12 +5,35 @@ export type User = {
     type: string
 }
 
-export type BaseSpec = {
+export type CharacterSpec = {
     speed: number
     quirkiness: number
     resilience: number
     compliance: number
     receptivity: number
+}
+export type BaseSpec = {
+    level: number
+    courage_buff?: number
+    max_level?: number
+    additional_buff?: number
+}
+
+export type MainAbilities = {
+    dexterity: BaseSpec
+    strength: BaseSpec
+    endurance: BaseSpec
+    intelligence: BaseSpec
+    temperament: BaseSpec
+    charisma: BaseSpec
+}
+export enum MainAbilitiesType {
+    DEXTERITY = "DEXTERITY",
+    STRENGTH = "STRENGTH",
+    ENDURANCE = "ENDURANCE",
+    INTELLIGENCE = "INTELLIGENCE",
+    TEMPERAMENT = "TEMPERAMENT",
+    CHARISMA = "CHARISMA"
 }
 
 export type Character = {
@@ -18,13 +41,16 @@ export type Character = {
     name: string,
     freeExperience: number
     race: string
-    baseSpec: BaseSpec
+    characterSpec: CharacterSpec
     effects: string[]
     injuries: string[]
     courage: number
     health: number
     fatigue: number
+    mainAbilities: MainAbilities
 }
+
+
 
 export enum MessagesType {
     SUCCESS = "success",
