@@ -73,13 +73,144 @@ export function Auth(pass_key: string) {
 
 export function SetTestCharacter() {
     const character_id = "LsLt7u8qjtQUOSxXED0R"
-    const base_spec_example: BaseSpec = {
+    const dexterity_example: BaseSpec = {
         level: 1,
-        max_level: 5
+        max_level: 5,
+        secondary_spec: [
+            {
+                name: "Маскировка",
+                level: 4
+            },
+            {
+                name: "Вождение транспорта",
+                level: 0
+            },
+            {
+                name: "Навигация",
+                level: 0
+            },
+            {
+                name: "Стрельба",
+                level: 3
+            },
+            {
+                name: "Взлом",
+                level: 0
+            }
+        ]
     }
-    const base_spec_example2: BaseSpec = {
-        level: 4,
-        additional_buff: 1
+    const strength_example: BaseSpec = {
+        level: 0,
+        max_level: 5,
+        secondary_spec: [
+            {
+                name: "Борьба",
+                level: 0
+            },
+            {
+                name: "Метание",
+                level: 0
+            },
+            {
+                name: "Лазанье",
+                level: 0
+            },
+            {
+                name: "Верховая езда",
+                level: 0
+            }
+        ]
+    }
+    const endurance_example: BaseSpec = {
+        level: 1,
+        max_level: 5,
+        secondary_spec: [
+            {
+                name: "Выслеживание",
+                level: 0
+            },
+            {
+                name: "Болевой порог",
+                level: 1
+            },
+            {
+                name: "Дыхание",
+                level: 0
+            },
+            {
+                name: "Первая помошь",
+                level: 0
+            }
+        ]
+    }
+    const intelligence_example: BaseSpec = {
+        level: 6,
+        additional_buff: 1,
+        secondary_spec:[
+            {
+                name: "Внимание",
+                level: 0
+            },
+            {
+                name: "Мана",
+                level: 5
+            },
+            {
+                name: "Алхимия",
+                level: 2,
+                additional_buff: 1
+            },
+            {
+                name: "Создание",
+                level: 1
+            },
+            {
+                name: "Ремонт",
+                level: 0
+            }
+        ]
+    }
+    const temperament_example: BaseSpec = {
+        level: 0,
+        secondary_spec:[
+            {
+                name: "Решительность",
+                level: 1
+            },
+            {
+                name: "Сила воли",
+                level: 0
+            },
+            {
+                name: "Запугивание",
+                level: 0
+            },
+            {
+                name: "Провокация",
+                level: 0
+            }
+        ]
+    }
+    const charisma_example: BaseSpec = {
+        level: 5,
+        secondary_spec:[
+            {
+                name: "Убеждение",
+                level: 2
+            },
+            {
+                name: "Эрудиция",
+                level: 1
+            },
+            {
+                name: "Игры",
+                level: 0
+            },
+            {
+                name: "Соблазнение",
+                level: 0
+            }
+        ]
     }
     const character = {
         name: "Lucky Guy",
@@ -100,12 +231,12 @@ export function SetTestCharacter() {
         health: -1,
         fatigue: 0,
         mainAbilities: {
-            dexterity: base_spec_example,
-            strength: base_spec_example,
-            endurance: base_spec_example,
-            intelligence: base_spec_example2,
-            temperament: base_spec_example,
-            charisma: base_spec_example2
+            dexterity: dexterity_example,
+            strength: strength_example,
+            endurance: endurance_example,
+            intelligence: intelligence_example,
+            temperament: temperament_example,
+            charisma: charisma_example
         }
     }
     return new Promise<Character>((resolve) => {

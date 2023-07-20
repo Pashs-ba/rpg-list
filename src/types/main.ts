@@ -12,12 +12,24 @@ export type CharacterSpec = {
     compliance: number
     receptivity: number
 }
-export type BaseSpec = {
+
+export type SecondarySpec = {
+    name: string
     level: number
     courage_buff?: number
     max_level?: number
     additional_buff?: number
 }
+
+export type BaseSpec = {
+    level: number
+    courage_buff?: number
+    max_level?: number
+    additional_buff?: number
+    secondary_spec?: SecondarySpec[]
+}
+
+
 
 export type MainAbilities = {
     dexterity: BaseSpec
