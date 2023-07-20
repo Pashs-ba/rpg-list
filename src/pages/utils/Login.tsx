@@ -1,12 +1,12 @@
-import Card from "../components/UI/Card.tsx";
-import {Form} from "../components/UI/Form.tsx";
-import {ElementType} from "../components/UI/types.ts";
+import Card from "../../components/UI/Card.tsx";
+import {Form} from "../../components/UI/Form.tsx";
+import {ElementType} from "../../components/UI/types.ts";
 import {useNavigate} from "react-router";
-import MessageBlock from "../components/messages/MessageBlock.tsx";
-import {Errors, MessagesType} from "../types/main.ts";
+import MessageBlock from "../../components/messages/MessageBlock.tsx";
+import {Errors, MessagesType} from "../../types/main.ts";
 import {useDispatch} from "react-redux";
-import {addMessage} from "../components/messages/messageSlice.ts";
-import {Auth} from "../utils/firestore_processing.ts";
+import {addMessage} from "../../components/messages/messageSlice.ts";
+import {Auth} from "../../utils/firestore_processing.ts";
 
 export default function Login() {
     const navigate = useNavigate()

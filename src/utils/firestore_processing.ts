@@ -1,5 +1,5 @@
-import {Character, Errors, User} from "../types/main.ts";
-import {collection, doc, getDoc} from "@firebase/firestore";
+import {BaseSpec, Character, Errors, User} from "../types/main.ts";
+import {collection, doc, getDoc, setDoc} from "@firebase/firestore";
 import {db} from "../firebase/app.ts";
 
 
@@ -69,4 +69,50 @@ export function Auth(pass_key: string) {
         )
     })
 
+}
+
+export function SetTestCharacter() {
+    const character_id = "LsLt7u8qjtQUOSxXED0R"
+    const base_spec_example: BaseSpec = {
+        level: 1,
+        max_level: 5
+    }
+    const base_spec_example2: BaseSpec = {
+        level: 4,
+        additional_buff: 1
+    }
+    const character = {
+        name: "Lucky Guy",
+        freeExperience: 239,
+        race: "Вида'аль",
+        characterSpec: {
+            speed: 1,
+            quirkiness: 1,
+            resilience: 1,
+            compliance: 1,
+            receptivity: 1,
+        },
+        effects: [
+            "Жажда золота"
+        ],
+        injuries: [],
+        courage: 0,
+        health: -1,
+        fatigue: 0,
+        mainAbilities: {
+            dexterity: base_spec_example,
+            strength: base_spec_example,
+            endurance: base_spec_example,
+            intelligence: base_spec_example2,
+            temperament: base_spec_example,
+            charisma: base_spec_example2
+        }
+    }
+    return new Promise<Character>((resolve) => {
+        setDoc(doc(collection(db, "characters"), character_id), {
+            ...character
+        }).then(() => {
+            resolve({...character, id: character_id} as Character)
+        })
+    })
 }

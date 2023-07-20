@@ -1,4 +1,4 @@
-import LoadingComponent from "../components/UI/LoadingComponent.tsx";
+import LoadingComponent from "../../components/UI/LoadingComponent.tsx";
 
 export default function LoadingPage(){
     return (
